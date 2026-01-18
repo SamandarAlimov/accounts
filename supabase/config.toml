@@ -1,0 +1,22 @@
+project_id = "tuqooxhjuupuvxikdkhr"
+
+[functions.oauth-token]
+verify_jwt = false
+
+[functions.oauth-userinfo]
+verify_jwt = false
+
+[functions.oauth-revoke]
+verify_jwt = false
+
+[functions.oauth-authorize]
+verify_jwt = false
+
+[functions.openid-configuration]
+verify_jwt = false
+
+[functions.api-gateway]
+verify_jwt = false
+
+[functions.rate-limit-notification]
+verify_jwt = false

@@ -1,0 +1,248 @@
+{
+  "_metadata": {
+    "generated_at": "2026-01-15T10:00:00Z",
+    "issuer": "https://accounts.alsamos.com",
+    "api_base_url": "https://api.alsamos.com",
+    "authorization_endpoint": "https://accounts.alsamos.com/oauth/authorize",
+    "token_endpoint": "https://api.alsamos.com/oauth/token",
+    "userinfo_endpoint": "https://api.alsamos.com/oauth/userinfo",
+    "revocation_endpoint": "https://api.alsamos.com/oauth/revoke",
+    "jwks_uri": "https://api.alsamos.com/.well-known/jwks.json",
+    "openid_configuration": "https://api.alsamos.com/.well-known/openid-configuration",
+    "scopes_supported": ["openid", "profile", "email", "phone", "address", "offline_access"],
+    "warning": "⚠️ CONFIDENTIAL - Store securely. Never commit to public repositories."
+  },
+  "clients": {
+    "ai": {
+      "name": "Alsamos AI",
+      "domain": "ai.alsamos.com",
+      "client_id": "client_ddc816d4-2ad2-4531-b6df-96f5fe76cad2",
+      "client_secret": "secret_1408d089d603b857209993bed8507347b192d01a9b0b7b4cfc55f113d4bdaccd",
+      "redirect_uris": [
+        "https://ai.alsamos.com/oauth/callback",
+        "https://ai.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "ai_studio": {
+      "name": "Alsamos AI Studio",
+      "domain": "aistudio.alsamos.com",
+      "client_id": "client_9ab62637-e3f9-428a-bea1-ebf216d44102",
+      "client_secret": "secret_7f297dc5821c98be65bebf2c8ec99f06ccdc61250a4f7423affc63feb1f3d08d",
+      "redirect_uris": [
+        "https://aistudio.alsamos.com/oauth/callback",
+        "https://aistudio.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "cloud": {
+      "name": "Alsamos Cloud",
+      "domain": "cloud.alsamos.com",
+      "client_id": "client_5d17d6df-8189-4093-a452-8a3e2149698b",
+      "client_secret": "secret_dc25e2d09367b3db1138bcb5e12da2aa790b6d9e0153c5ede64dbec654991619",
+      "redirect_uris": [
+        "https://cloud.alsamos.com/oauth/callback",
+        "https://cloud.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "deliver": {
+      "name": "Alsamos Deliver",
+      "domain": "deliver.alsamos.com",
+      "client_id": "client_773beddc-b5c0-445a-82a7-79907a9ebff0",
+      "client_secret": "secret_dc31d5ae33cd0339e1accce48df1a59883c82b08c76d3318dbb94b8393c4b9dd",
+      "redirect_uris": [
+        "https://deliver.alsamos.com/oauth/callback",
+        "https://deliver.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "eats": {
+      "name": "Alsamos Eats",
+      "domain": "eats.alsamos.com",
+      "client_id": "client_da5a78a2-b575-474b-a398-2b6006781148",
+      "client_secret": "secret_d9fe9bfca23e304752d18326c8a8e9e1e36a4d00ce4e6d1bfd005b842b3f1355",
+      "redirect_uris": [
+        "https://eats.alsamos.com/oauth/callback",
+        "https://eats.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "education": {
+      "name": "Alsamos Education",
+      "domain": "education.alsamos.com",
+      "client_id": "client_67ab64ac-86af-4b51-8252-01f93e27501a",
+      "client_secret": "secret_081733f7d447206cc6f2810a0e71e5fff8ac663926ce47f3db12ff56545ecff9",
+      "redirect_uris": [
+        "https://education.alsamos.com/oauth/callback",
+        "https://education.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "erp": {
+      "name": "Alsamos ERP",
+      "domain": "erp.alsamos.com",
+      "client_id": "client_c31813c7-5e06-431d-b8d0-6689b60160e4",
+      "client_secret": "secret_3e32a3b6adbfeca442621b6e1b06c7bcb3076038f9a4cd1cca65f8590048a988",
+      "redirect_uris": [
+        "https://erp.alsamos.com/oauth/callback",
+        "https://erp.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "go": {
+      "name": "Alsamos Go",
+      "domain": "go.alsamos.com",
+      "client_id": "client_fda4bec9-8a2e-4d10-be26-b77f78b47dc0",
+      "client_secret": "secret_85830b9318c8bf29846aadd6a559dc000151ff4e20272c76fd7f271e3470b3df",
+      "redirect_uris": [
+        "https://go.alsamos.com/oauth/callback",
+        "https://go.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "islam": {
+      "name": "Alsamos Islam",
+      "domain": "islam.alsamos.com",
+      "client_id": "client_afc5a78e-438b-4171-9b56-017504607422",
+      "client_secret": "secret_633d312b389f60f34f284a575ca0204083bb070ca08adecdccfac5894fd8cef1",
+      "redirect_uris": [
+        "https://islam.alsamos.com/oauth/callback",
+        "https://islam.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "it": {
+      "name": "Alsamos IT",
+      "domain": "it.alsamos.com",
+      "client_id": "client_5c379ab1-ac98-4962-9c2f-db8ca61362e4",
+      "client_secret": "secret_fb0e43cdb7af63427dccad08482463707cd0bd3a8c5615b6683d1b2154a5e666",
+      "redirect_uris": [
+        "https://it.alsamos.com/oauth/callback",
+        "https://it.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "lms": {
+      "name": "Alsamos LMS",
+      "domain": "lms.alsamos.com",
+      "client_id": "client_7f227821-cfa7-4189-b258-34ce93e69eba",
+      "client_secret": "secret_ac2cefbf67916b8e66d069d4ba180565d4e75bb79180b5276880cef1e89087b7",
+      "redirect_uris": [
+        "https://lms.alsamos.com/oauth/callback",
+        "https://lms.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "mail": {
+      "name": "Alsamos Mail",
+      "domain": "mail.alsamos.com",
+      "client_id": "client_d9251246-1d05-43a3-a7a7-74ef270feeb4",
+      "client_secret": "secret_40a7c0e57bd2aeb12406ca5eda1ebfab42cf9aa09a79ecead55ac2e9c81fc0cb",
+      "redirect_uris": [
+        "https://mail.alsamos.com/oauth/callback",
+        "https://mail.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "messenger": {
+      "name": "Alsamos Messenger",
+      "domain": "messenger.alsamos.com",
+      "client_id": "client_89b633fe-4d5d-4037-82da-aa332da95f2d",
+      "client_secret": "secret_a7395865e20913df00d46fdf21ac1be9c83d4db273d2e88e3d8934a4f5a4b561",
+      "redirect_uris": [
+        "https://messenger.alsamos.com/oauth/callback",
+        "https://messenger.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "office": {
+      "name": "Alsamos Office",
+      "domain": "office.alsamos.com",
+      "client_id": "client_ff4883bbf24d4320bbc84650ff15e881",
+      "client_secret": "secret_0c5820686262431cb148641901ada35051bae70fc64e4e169dfa652db80ca8a9",
+      "redirect_uris": [
+        "https://office.alsamos.com/oauth/callback",
+        "https://office.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "pay": {
+      "name": "Alsamos Pay",
+      "domain": "pay.alsamos.com",
+      "client_id": "client_5748d38c-810a-4ab0-b888-c8e8814b37b6",
+      "client_secret": "secret_2e644ddfc0f232ef8b62cd8b73c9eba4128533ee24004eedbfc36a4a4f21d99b",
+      "redirect_uris": [
+        "https://pay.alsamos.com/oauth/callback",
+        "https://pay.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "search": {
+      "name": "Alsamos Search",
+      "domain": "search.alsamos.com",
+      "client_id": "client_d261094f-ab50-4850-8314-b9fbef675d4d",
+      "client_secret": "secret_6898b5580c3754d55dd8fb0f4edf727c665fd1c1ee392f11d5186b500a45d46b",
+      "redirect_uris": [
+        "https://search.alsamos.com/oauth/callback",
+        "https://search.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "social": {
+      "name": "Alsamos Social",
+      "domain": "social.alsamos.com",
+      "client_id": "client_3b95c84d-c121-444c-91a2-73006e7150b2",
+      "client_secret": "secret_005f2087ba581460e67e7530e3907fcd2e82cf8b71976eaa23770f7ada1a88bf",
+      "redirect_uris": [
+        "https://social.alsamos.com/oauth/callback",
+        "https://social.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "translate": {
+      "name": "Alsamos Translate",
+      "domain": "translate.alsamos.com",
+      "client_id": "client_8643da4c-5b7e-4fbd-8089-ab2d1cbbcb54",
+      "client_secret": "secret_6a3f290e53f2c76659f9cf38f379cafad692f15779acbe107d4721e322e8621c",
+      "redirect_uris": [
+        "https://translate.alsamos.com/oauth/callback",
+        "https://translate.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "tv": {
+      "name": "Alsamos TV",
+      "domain": "tv.alsamos.com",
+      "client_id": "client_69e78d57-d135-4a17-ab32-872c5e49c423",
+      "client_secret": "secret_6ec874a6c33c0b906ec4137b89661e4fbac621f8a735e959af46106db86f7c47",
+      "redirect_uris": [
+        "https://tv.alsamos.com/oauth/callback",
+        "https://tv.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "valley": {
+      "name": "Alsamos Valley",
+      "domain": "valley.alsamos.com",
+      "client_id": "client_8edd51dd-b7a3-4105-985d-fa1d1d12447a",
+      "client_secret": "secret_97b9fba226e754868d3477b22ab91f5381e336de7c70cb2fcd3ce9eeff8c261f",
+      "redirect_uris": [
+        "https://valley.alsamos.com/oauth/callback",
+        "https://valley.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    },
+    "video_studio": {
+      "name": "Alsamos Video Studio",
+      "domain": "videostudio.alsamos.com",
+      "client_id": "client_ca6902a4-83e2-4a3d-baf6-853e93f7486d",
+      "client_secret": "secret_9ae63e3b0415472e85bd6b4fb62b87574fcdd12dfafa3e1a94ad955fff48f070",
+      "redirect_uris": [
+        "https://videostudio.alsamos.com/oauth/callback",
+        "https://videostudio.alsamos.com/auth/callback"
+      ],
+      "scopes": ["openid", "profile", "email", "offline_access"]
+    }
+  }
+}
