@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -43,6 +44,8 @@ const steps = [
 
 export default function RegisterKids() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const continueUrl = searchParams.get("continue");
   const { user, signIn } = useAuth();
   const { t } = useLanguage();
   const [currentStep, setCurrentStep] = useState(1);
@@ -130,12 +133,59 @@ export default function RegisterKids() {
   };
 
   const handleCreateAccount = async () => {
+    if (!user) {
+      toast.error("Parent must be verified first");
+      return;
+    }
+
     setIsLoading(true);
-    // Simulate account creation
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsLoading(false);
-    toast.success("Kids account created successfully!");
-    navigate("/dashboard/people-sharing");
+    try {
+      const { error } = await supabase.from("kids_accounts").insert({
+        parent_id: user.id,
+        child_first_name: childFirstName,
+        child_last_name: childLastName,
+        child_username: childUsername,
+        child_age: parseInt(childAge),
+        screen_time_limit: screenTimeLimit[0],
+        content_filter_level: contentFilterLevel,
+        app_restrictions: appRestrictions,
+        sleep_mode_enabled: sleepModeEnabled,
+        sleep_mode_start: sleepModeStart,
+        sleep_mode_end: sleepModeEnd,
+        parent_approval_required: parentApprovalRequired,
+        location_sharing: locationSharing,
+        device_name: deviceName || null,
+        device_type: deviceType || null,
+      });
+
+      if (error) {
+        if (error.code === "23505") {
+          toast.error("This username is already taken. Please choose another.");
+        } else {
+          toast.error("Failed to create kids account: " + error.message);
+        }
+        return;
+      }
+
+      toast.success("Kids account created successfully!");
+      if (continueUrl) {
+        try {
+          const url = new URL(continueUrl);
+          const { data: { session } } = await supabase.auth.getSession();
+          if (session?.access_token) {
+            url.searchParams.set("access_token", session.access_token);
+            url.searchParams.set("refresh_token", session.refresh_token || "");
+          }
+          window.location.href = url.toString();
+          return;
+        } catch { /* invalid URL, fallback */ }
+      }
+      navigate("/dashboard/people-sharing");
+    } catch (err) {
+      toast.error("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

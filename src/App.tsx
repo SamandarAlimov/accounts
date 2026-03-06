@@ -47,6 +47,11 @@ function AuthRedirect({ children }: { children: React.ReactNode }) {
   }
 
   if (user) {
+    // If there's a continue URL, don't redirect to dashboard — let the page handle it
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("continue")) {
+      return <>{children}</>;
+    }
     return <Navigate to="/dashboard" replace />;
   }
 
@@ -81,6 +86,16 @@ const AppRoutes = () => (
 
     {/* Legacy aliases (external ecosystem links) */}
     <Route path="/authorize" element={<LegacyRedirect to="/oauth/authorize" />} />
+    <Route path="/personal" element={<LegacyRedirect to="/dashboard/personal" />} />
+    <Route path="/security" element={<LegacyRedirect to="/dashboard/security" />} />
+    <Route path="/devices" element={<LegacyRedirect to="/dashboard/devices" />} />
+    <Route path="/passwords" element={<LegacyRedirect to="/dashboard/passwords" />} />
+    <Route path="/payments" element={<LegacyRedirect to="/dashboard/payments" />} />
+    <Route path="/apps" element={<LegacyRedirect to="/dashboard/apps" />} />
+    <Route path="/privacy" element={<LegacyRedirect to="/dashboard/privacy" />} />
+    <Route path="/people" element={<LegacyRedirect to="/dashboard/people" />} />
+    <Route path="/developer" element={<LegacyRedirect to="/dashboard/developer" />} />
+    <Route path="/recovery" element={<LegacyRedirect to="/dashboard/recovery" />} />
 
     {/* Canonical OAuth routes */}
     <Route path="/oauth/callback" element={<OAuthCallback />} />

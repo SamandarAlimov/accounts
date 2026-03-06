@@ -115,6 +115,123 @@ export type Database = {
           },
         ]
       }
+      business_accounts: {
+        Row: {
+          admin_email: string | null
+          admin_first_name: string | null
+          admin_last_name: string | null
+          admin_phone: string | null
+          company_address: string | null
+          company_domain: string | null
+          company_name: string
+          company_size: string | null
+          created_at: string
+          domain_verified: boolean
+          id: string
+          industry: string | null
+          owner_id: string
+          tax_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          admin_email?: string | null
+          admin_first_name?: string | null
+          admin_last_name?: string | null
+          admin_phone?: string | null
+          company_address?: string | null
+          company_domain?: string | null
+          company_name: string
+          company_size?: string | null
+          created_at?: string
+          domain_verified?: boolean
+          id?: string
+          industry?: string | null
+          owner_id: string
+          tax_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          admin_email?: string | null
+          admin_first_name?: string | null
+          admin_last_name?: string | null
+          admin_phone?: string | null
+          company_address?: string | null
+          company_domain?: string | null
+          company_name?: string
+          company_size?: string | null
+          created_at?: string
+          domain_verified?: boolean
+          id?: string
+          industry?: string | null
+          owner_id?: string
+          tax_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      kids_accounts: {
+        Row: {
+          app_restrictions: boolean
+          child_age: number
+          child_first_name: string
+          child_last_name: string
+          child_username: string
+          content_filter_level: string
+          created_at: string
+          device_name: string | null
+          device_type: string | null
+          id: string
+          location_sharing: boolean
+          parent_approval_required: boolean
+          parent_id: string
+          screen_time_limit: number
+          sleep_mode_enabled: boolean
+          sleep_mode_end: string | null
+          sleep_mode_start: string | null
+          updated_at: string
+        }
+        Insert: {
+          app_restrictions?: boolean
+          child_age: number
+          child_first_name: string
+          child_last_name: string
+          child_username: string
+          content_filter_level?: string
+          created_at?: string
+          device_name?: string | null
+          device_type?: string | null
+          id?: string
+          location_sharing?: boolean
+          parent_approval_required?: boolean
+          parent_id: string
+          screen_time_limit?: number
+          sleep_mode_enabled?: boolean
+          sleep_mode_end?: string | null
+          sleep_mode_start?: string | null
+          updated_at?: string
+        }
+        Update: {
+          app_restrictions?: boolean
+          child_age?: number
+          child_first_name?: string
+          child_last_name?: string
+          child_username?: string
+          content_filter_level?: string
+          created_at?: string
+          device_name?: string | null
+          device_type?: string | null
+          id?: string
+          location_sharing?: boolean
+          parent_approval_required?: boolean
+          parent_id?: string
+          screen_time_limit?: number
+          sleep_mode_enabled?: boolean
+          sleep_mode_end?: string | null
+          sleep_mode_start?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       notifications: {
         Row: {
           action_url: string | null
@@ -432,6 +549,57 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      saved_passwords: {
+        Row: {
+          category: string | null
+          created_at: string
+          encrypted_password: string
+          favicon_url: string | null
+          id: string
+          is_breached: boolean | null
+          last_used_at: string | null
+          notes: string | null
+          strength: string | null
+          updated_at: string
+          user_id: string
+          username: string
+          website: string
+          website_url: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          encrypted_password: string
+          favicon_url?: string | null
+          id?: string
+          is_breached?: boolean | null
+          last_used_at?: string | null
+          notes?: string | null
+          strength?: string | null
+          updated_at?: string
+          user_id: string
+          username: string
+          website: string
+          website_url?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          encrypted_password?: string
+          favicon_url?: string | null
+          id?: string
+          is_breached?: boolean | null
+          last_used_at?: string | null
+          notes?: string | null
+          strength?: string | null
+          updated_at?: string
+          user_id?: string
+          username?: string
+          website?: string
+          website_url?: string | null
+        }
+        Relationships: []
       }
       user_roles: {
         Row: {

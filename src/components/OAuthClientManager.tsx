@@ -222,7 +222,7 @@ export function OAuthClientManager() {
               Register Application
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-lg">
+          <DialogContent className="sm:max-w-lg max-h-[85vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Register OAuth Application</DialogTitle>
               <DialogDescription>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { AuthLayout } from "@/components/AuthLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +11,8 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const continueUrl = searchParams.get("continue");
   const { signIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,6 +57,18 @@ export default function Login() {
     }
 
     toast.success("Welcome back to Alsamos!");
+    if (continueUrl) {
+      try {
+        const url = new URL(continueUrl);
+        const { data: { session } } = await (await import("@/integrations/supabase/client")).supabase.auth.getSession();
+        if (session?.access_token) {
+          url.searchParams.set("access_token", session.access_token);
+          url.searchParams.set("refresh_token", session.refresh_token || "");
+        }
+        window.location.href = url.toString();
+        return;
+      } catch { /* invalid URL, fallback */ }
+    }
     navigate("/dashboard");
   };
 
@@ -90,7 +104,7 @@ export default function Login() {
 
           <div className="text-sm">
             <Link 
-              to="/register" 
+              to={`/register${continueUrl ? `?continue=${encodeURIComponent(continueUrl)}` : ''}`}
               className="text-primary hover:text-primary/80 transition-colors font-medium"
             >
               Create an Alsamos Account

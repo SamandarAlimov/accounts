@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -77,6 +78,8 @@ const industries = [
 
 export default function RegisterBusiness() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const continueUrl = searchParams.get("continue");
   const { t } = useLanguage();
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -157,11 +160,68 @@ export default function RegisterBusiness() {
 
   const handleCreateAccount = async () => {
     setIsLoading(true);
-    // Simulate account creation
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsLoading(false);
-    toast.success("Business account created successfully!");
-    navigate("/dashboard");
+    try {
+      // 1. Sign up the admin user
+      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+        email: adminEmail,
+        password: adminPassword,
+        options: {
+          data: {
+            first_name: adminFirstName,
+            last_name: adminLastName,
+          },
+        },
+      });
+
+      if (signUpError) {
+        toast.error("Failed to create account: " + signUpError.message);
+        return;
+      }
+
+      if (!signUpData.user) {
+        toast.error("Account creation failed. Please try again.");
+        return;
+      }
+
+      // 2. Insert business account
+      const { error: bizError } = await supabase.from("business_accounts").insert({
+        owner_id: signUpData.user.id,
+        company_name: companyName,
+        industry,
+        company_size: companySize,
+        company_domain: domain || null,
+        company_address: country,
+        admin_first_name: adminFirstName,
+        admin_last_name: adminLastName,
+        admin_email: adminEmail,
+        admin_phone: adminPhone || null,
+        domain_verified: verificationStatus === "verified",
+      });
+
+      if (bizError) {
+        toast.error("Account created but failed to save business info: " + bizError.message);
+      } else {
+        toast.success("Business account created successfully! Please check your email to verify.");
+      }
+
+      if (continueUrl) {
+        try {
+          const url = new URL(continueUrl);
+          const { data: { session } } = await supabase.auth.getSession();
+          if (session?.access_token) {
+            url.searchParams.set("access_token", session.access_token);
+            url.searchParams.set("refresh_token", session.refresh_token || "");
+          }
+          window.location.href = url.toString();
+          return;
+        } catch { /* invalid URL, fallback */ }
+      }
+      navigate("/login");
+    } catch (err) {
+      toast.error("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

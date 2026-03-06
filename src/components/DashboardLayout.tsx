@@ -113,7 +113,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const currentPage = navItems.find(item => item.path === location.pathname);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="h-screen flex flex-col bg-background overflow-hidden">
       {/* Top Navigation - Enhanced */}
       <header className="sticky top-0 z-50 border-b border-border/50 bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
         <div className="flex items-center justify-between h-16 px-4 lg:px-6">
@@ -266,11 +266,11 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         )}
       </header>
 
-      <div className="flex">
+      <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         <aside
           className={cn(
-            "fixed inset-y-0 left-0 z-40 w-64 bg-background border-r border-border/50 pt-16 transition-transform duration-300 lg:translate-x-0 lg:static lg:pt-0",
+            "fixed inset-y-0 left-0 z-40 w-64 bg-background border-r border-border/50 pt-16 transition-transform duration-300 lg:translate-x-0 lg:static lg:pt-0 lg:h-auto",
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
@@ -282,7 +282,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             />
           )}
 
-          <nav className="p-4 space-y-1 h-[calc(100vh-4rem)] overflow-y-auto">
+          <nav className="p-4 space-y-1 h-full overflow-y-auto">
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
               return (
@@ -306,7 +306,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 min-h-[calc(100vh-4rem)]">
+        <main className="flex-1 overflow-y-auto">
           <div className="container max-w-5xl py-8 px-4 lg:px-8">
             {children}
           </div>
